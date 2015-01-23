@@ -1,6 +1,6 @@
 from os.path import dirname, join, realpath, expanduser, isdir
 from os import chmod
-import platform
+import socket
 import sys
 import shutil
 
@@ -71,7 +71,7 @@ class BaseConfigLoader(object):
         conf.set('eventlog_file', None)
         conf.set('max_eventlog_file_size', 1024 * 1024 * 10)  # 10mb
         conf.set('max_eventlog_file_backups', 5)
-        conf.set('hostname', platform.node())
+        conf.set('hostname', socket.getfqdn())
         conf.set('master_hostname', 'localhost')
         conf.set('master_port', '43000')
         conf.set('slaves', ['localhost'])
